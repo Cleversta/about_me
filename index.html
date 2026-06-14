@@ -1,519 +1,508 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Marason</title>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Marason</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0F0E0D;
+  --ink2:#3A3835;
+  --ink3:#7C7872;
+  --paper:#FAFAF7;
+  --paper2:#F2F1EC;
+  --rule:#E1DFD8;
+  --teal:#1A6B5A;
+  --teal-lt:#D6EDE8;
+  --teal-mid:#2D9177;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'DM Sans',sans-serif;
+  font-size:16px;
+  line-height:1.6;
+}
 
-    :root {
-      --bg:       #FEFCF8;
-      --warm:     #F5F1EA;
-      --card:     #F0ECE4;
-      --text:     #2C2C2C;
-      --muted:    #7A7570;
-      --border:   #E2DDD6;
-      --green:    #3D7A68;
-      --green-lt: #EBF4F1;
-    }
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 48px;
+  height:60px;
+  background:var(--paper);
+  border-bottom:1px solid var(--rule);
+}
+.nav-logo{
+  font-family:'DM Serif Display',serif;
+  font-size:1.15rem;
+  color:var(--ink);
+  letter-spacing:-0.01em;
+}
+.nav-links{display:flex;gap:32px;list-style:none;align-items:center}
+.nav-links a{
+  color:var(--ink3);
+  text-decoration:none;
+  font-size:0.82rem;
+  font-weight:400;
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+  transition:color 0.15s;
+}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{
+  display:inline-flex;align-items:center;
+  padding:7px 18px;
+  background:var(--ink);
+  color:var(--paper)!important;
+  border-radius:4px;
+  font-size:0.82rem!important;
+  font-weight:500!important;
+  text-transform:none!important;
+  letter-spacing:0!important;
+  transition:background 0.15s!important;
+}
+.nav-cta:hover{background:var(--teal)!important;color:#fff!important}
 
-    html { scroll-behavior: smooth; }
+/* HERO */
+#hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding:60px 48px 64px;
+  border-bottom:1px solid var(--rule);
+  position:relative;
+  overflow:hidden;
+}
+.hero-bg-num{
+  position:absolute;
+  right:-0.05em;
+  top:50%;
+  transform:translateY(-56%);
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(240px,32vw,420px);
+  color:transparent;
+  -webkit-text-stroke:1px var(--rule);
+  text-stroke:1px var(--rule);
+  line-height:1;
+  pointer-events:none;
+  user-select:none;
+  letter-spacing:-0.04em;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:0.78rem;
+  font-weight:500;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--teal);
+  margin-bottom:32px;
+}
+.status-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--teal-mid);
+  animation:pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.85)}}
+.hero-h1{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(3.2rem,7vw,6rem);
+  line-height:1.05;
+  letter-spacing:-0.03em;
+  color:var(--ink);
+  max-width:720px;
+  margin-bottom:32px;
+}
+.hero-h1 em{
+  font-style:italic;
+  color:var(--teal);
+}
+.hero-bottom{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:32px;
+  flex-wrap:wrap;
+}
+.hero-desc{
+  font-size:1rem;
+  color:var(--ink3);
+  line-height:1.8;
+  max-width:440px;
+  font-weight:300;
+}
+.hero-actions{display:flex;gap:10px;flex-shrink:0}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 26px;
+  font-family:'DM Sans',sans-serif;
+  font-weight:500;
+  font-size:0.875rem;
+  text-decoration:none;
+  transition:all 0.18s;
+  cursor:pointer;
+  border:none;
+}
+.btn-primary{
+  background:var(--ink);
+  color:var(--paper);
+  border-radius:4px;
+}
+.btn-primary:hover{background:var(--teal)}
+.btn-ghost{
+  background:transparent;
+  color:var(--ink);
+  border:1px solid var(--rule);
+  border-radius:4px;
+}
+.btn-ghost:hover{border-color:var(--ink3)}
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Inter', sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-    }
+/* ABOUT */
+#about{
+  padding:96px 48px;
+  display:grid;
+  grid-template-columns:1fr 2fr;
+  gap:80px;
+  max-width:1100px;
+  border-bottom:1px solid var(--rule);
+}
+.section-label{
+  font-size:0.72rem;
+  font-weight:500;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--ink3);
+  padding-top:6px;
+}
+.about-main p{
+  font-size:1.15rem;
+  color:var(--ink2);
+  line-height:1.85;
+  margin-bottom:22px;
+  font-weight:300;
+}
+.about-main p:last-child{margin-bottom:0}
+.about-main strong{color:var(--ink);font-weight:500}
 
-    /* NAV */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 22px 56px;
-      background: rgba(254,252,248,0.93);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-    }
+/* STATS ROW */
+.stats-row{
+  display:flex;gap:0;
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+  margin:56px 0 0;
+}
+.stat{
+  flex:1;
+  padding:24px 28px;
+  border-right:1px solid var(--rule);
+}
+.stat:last-child{border-right:none}
+.stat-num{
+  font-family:'DM Serif Display',serif;
+  font-size:2rem;
+  color:var(--ink);
+  line-height:1;
+  margin-bottom:6px;
+}
+.stat-label{
+  font-size:0.78rem;
+  color:var(--ink3);
+  letter-spacing:0.04em;
+}
 
-    .nav-logo {
-      font-family: 'Lora', serif;
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--text);
-      letter-spacing: -0.01em;
-    }
+/* PROJECTS */
+#projects{
+  padding:96px 48px;
+  border-bottom:1px solid var(--rule);
+}
+.projects-header{
+  display:grid;
+  grid-template-columns:1fr 2fr;
+  gap:80px;
+  max-width:1100px;
+  margin-bottom:64px;
+}
+.projects-intro{
+  font-size:1rem;
+  color:var(--ink3);
+  line-height:1.8;
+  font-weight:300;
+}
+.projects-intro strong{color:var(--ink);font-weight:500}
 
-    .nav-links {
-      display: flex;
-      gap: 36px;
-      list-style: none;
-    }
+.group-title{
+  font-size:0.72rem;
+  font-weight:500;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--ink3);
+  margin-bottom:20px;
+  padding-left:2px;
+}
+.projects-group{max-width:1100px;margin-bottom:52px}
 
-    .nav-links a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.875rem;
-      font-weight: 400;
-      transition: color 0.2s;
-    }
+.project-list{display:flex;flex-direction:column}
+.project-row{
+  display:grid;
+  grid-template-columns:220px 1fr auto;
+  gap:32px;
+  align-items:start;
+  padding:28px 0;
+  border-top:1px solid var(--rule);
+  transition:background 0.15s;
+}
+.project-row:last-child{border-bottom:1px solid var(--rule)}
+.project-row:hover .project-name{color:var(--teal)}
+.project-name{
+  font-family:'DM Serif Display',serif;
+  font-size:1.3rem;
+  color:var(--ink);
+  transition:color 0.15s;
+  padding-top:2px;
+}
+.project-desc{
+  font-size:0.9rem;
+  color:var(--ink3);
+  line-height:1.75;
+  font-weight:300;
+  max-width:520px;
+}
+.project-tag{
+  display:inline-flex;
+  align-items:center;
+  padding:5px 12px;
+  border-radius:100px;
+  font-size:0.72rem;
+  font-weight:500;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+.tag-live{background:var(--teal-lt);color:var(--teal)}
+.tag-building{background:var(--paper2);color:var(--ink3);border:1px solid var(--rule)}
+.tag-community{background:var(--ink);color:var(--paper)}
 
-    .nav-links a:hover { color: var(--text); }
+/* CONTACT */
+#contact{
+  padding:96px 48px;
+  display:grid;
+  grid-template-columns:1fr 2fr;
+  gap:80px;
+  max-width:1100px;
+}
+.contact-main h2{
+  font-family:'DM Serif Display',serif;
+  font-size:clamp(2rem,3.5vw,3rem);
+  font-weight:400;
+  letter-spacing:-0.02em;
+  line-height:1.2;
+  margin-bottom:18px;
+}
+.contact-main p{
+  font-size:1rem;
+  color:var(--ink3);
+  line-height:1.8;
+  margin-bottom:36px;
+  font-weight:300;
+  max-width:400px;
+}
+.social-grid{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.social-link{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:10px 20px;
+  border:1px solid var(--rule);
+  border-radius:4px;
+  color:var(--ink);
+  text-decoration:none;
+  font-size:0.85rem;
+  font-weight:500;
+  transition:all 0.18s;
+  background:var(--paper);
+}
+.social-link:hover{
+  border-color:var(--teal);
+  color:var(--teal);
+  background:var(--teal-lt);
+}
+.social-link svg{flex-shrink:0;opacity:0.7}
+.social-link:hover svg{opacity:1}
 
-    /* HERO */
-    #hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 0 56px;
-      border-bottom: 1px solid var(--border);
-    }
+/* FOOTER */
+footer{
+  padding:20px 48px;
+  border-top:1px solid var(--rule);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:0.78rem;
+  color:var(--ink3);
+}
+.footer-logo{
+  font-family:'DM Serif Display',serif;
+  font-style:italic;
+  color:var(--ink);
+}
 
-    .hero-inner {
-      max-width: 680px;
-      padding: 120px 0 80px;
-    }
-
-    .hero-greeting {
-      font-family: 'Lora', serif;
-      font-style: italic;
-      font-size: 1.1rem;
-      color: var(--green);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--green);
-      animation: breathe 3s ease-in-out infinite;
-      flex-shrink: 0;
-    }
-
-    @keyframes breathe {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
-
-    h1 {
-      font-family: 'Lora', serif;
-      font-size: clamp(2.8rem, 6vw, 5rem);
-      font-weight: 700;
-      line-height: 1.12;
-      letter-spacing: -0.02em;
-      color: var(--text);
-      margin-bottom: 28px;
-    }
-
-    h1 em {
-      font-style: italic;
-      color: var(--green);
-    }
-
-    .hero-body {
-      font-size: 1.1rem;
-      color: var(--muted);
-      line-height: 1.85;
-      max-width: 520px;
-      margin-bottom: 44px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 13px 28px;
-      border-radius: 100px;
-      font-family: 'Inter', sans-serif;
-      font-weight: 500;
-      font-size: 0.9rem;
-      text-decoration: none;
-      transition: all 0.2s;
-      border: none;
-      cursor: pointer;
-    }
-
-    .btn-filled {
-      background: var(--green);
-      color: #fff;
-    }
-
-    .btn-filled:hover { background: #336659; }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--text);
-      border: 1.5px solid var(--border);
-    }
-
-    .btn-outline:hover { border-color: var(--muted); }
-
-    /* ABOUT */
-    #about {
-      padding: 100px 56px;
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 64px;
-      max-width: 1000px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .side-label {
-      font-family: 'Lora', serif;
-      font-style: italic;
-      font-size: 1rem;
-      color: var(--muted);
-      padding-top: 4px;
-    }
-
-    .about-text p {
-      font-size: 1.05rem;
-      color: var(--muted);
-      line-height: 1.9;
-      margin-bottom: 20px;
-    }
-
-    .about-text p:last-child { margin-bottom: 0; }
-
-    .about-text strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    /* PROJECTS */
-    #projects {
-      padding: 100px 56px;
-      border-bottom: 1px solid var(--border);
-      background: var(--warm);
-    }
-
-    .projects-top {
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 64px;
-      max-width: 1000px;
-      margin-bottom: 56px;
-    }
-
-    .projects-intro {
-      font-size: 1.05rem;
-      color: var(--muted);
-      line-height: 1.85;
-    }
-
-    .projects-intro strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    .projects-group {
-      max-width: 1000px;
-      margin-bottom: 48px;
-    }
-
-    .group-label {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 16px;
-      padding-left: 2px;
-    }
-
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 16px;
-    }
-
-    .card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      transition: border-color 0.2s;
-    }
-
-    .card:hover { border-color: var(--green); }
-
-    .card-name {
-      font-family: 'Lora', serif;
-      font-weight: 600;
-      font-size: 1.1rem;
-      color: var(--text);
-    }
-
-    .card-desc {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.7;
-      flex: 1;
-    }
-
-    .card-badge {
-      display: inline-flex;
-      align-self: flex-start;
-      margin-top: 4px;
-      font-size: 0.72rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      padding: 4px 10px;
-      border-radius: 100px;
-      background: var(--green-lt);
-      color: var(--green);
-    }
-
-    .card-badge.dim {
-      background: var(--card);
-      color: var(--muted);
-    }
-
-    /* CONTACT */
-    #contact {
-      padding: 100px 56px;
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 64px;
-      max-width: 1000px;
-    }
-
-    .contact-body h2 {
-      font-family: 'Lora', serif;
-      font-size: clamp(1.8rem, 3vw, 2.4rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1.25;
-      margin-bottom: 16px;
-    }
-
-    .contact-body p {
-      font-size: 1rem;
-      color: var(--muted);
-      line-height: 1.8;
-      margin-bottom: 32px;
-      max-width: 440px;
-    }
-
-    .links-row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .contact-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 10px 20px;
-      border: 1.5px solid var(--border);
-      border-radius: 100px;
-      color: var(--text);
-      text-decoration: none;
-      font-size: 0.875rem;
-      font-weight: 500;
-      transition: all 0.2s;
-      background: var(--bg);
-    }
-
-    .contact-link:hover {
-      border-color: var(--green);
-      color: var(--green);
-    }
-
-    /* FOOTER */
-    footer {
-      padding: 24px 56px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.8rem;
-      color: var(--muted);
-      font-family: 'Inter', sans-serif;
-    }
-
-    footer span:first-child {
-      font-family: 'Lora', serif;
-      font-style: italic;
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 700px) {
-      nav { padding: 18px 24px; }
-      .nav-links { display: none; }
-      #hero { padding: 0 24px; }
-      #about, #contact { padding: 64px 24px; grid-template-columns: 1fr; gap: 20px; }
-      #projects { padding: 64px 24px; }
-      .projects-top { grid-template-columns: 1fr; gap: 16px; }
-      footer { padding: 20px 24px; flex-direction: column; gap: 6px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .dot { animation: none; }
-    }
-  </style>
+/* RESPONSIVE */
+@media(max-width:760px){
+  nav{padding:0 20px}
+  .nav-links{display:none}
+  #hero{padding:80px 20px 48px}
+  .hero-bg-num{display:none}
+  .hero-h1{font-size:2.8rem}
+  .hero-bottom{flex-direction:column;align-items:flex-start}
+  #about,#contact{padding:64px 20px;grid-template-columns:1fr;gap:24px}
+  #projects{padding:64px 20px}
+  .projects-header{grid-template-columns:1fr;gap:16px}
+  .project-row{grid-template-columns:1fr;gap:10px}
+  .stats-row{flex-direction:column}
+  .stat{border-right:none;border-bottom:1px solid var(--rule);padding:18px 0}
+  .stat:last-child{border-bottom:none}
+  footer{padding:18px 20px;flex-direction:column;gap:4px;text-align:center}
+}
+@media(prefers-reduced-motion:reduce){
+  .status-dot{animation:none}
+}
+</style>
 </head>
 <body>
 
-  <nav>
-    <span class="nav-logo">Marason</span>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+<nav>
+  <span class="nav-logo">Marason</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+  </ul>
+</nav>
 
-  <!-- HERO -->
-  <section id="hero">
-    <div class="hero-inner">
-      <p class="hero-greeting"><span class="dot"></span> Available for opportunities</p>
-      <h1>I build things<br />people <em>actually</em> use.</h1>
-      <p class="hero-body">
-        Hi, I'm Marason. I'm a self-taught maker — I build apps and websites
-        that help real people in their everyday lives. Everything I release is
-        free. No ads, no subscriptions, no catch.
-      </p>
-      <div class="hero-actions">
-        <a href="#projects" class="btn btn-filled">See My Work</a>
-        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-num" aria-hidden="true">4</div>
+  <p class="hero-tag"><span class="status-dot"></span>Open to opportunities</p>
+  <h1 class="hero-h1">I build things<br/>people <em>actually</em> use.</h1>
+  <div class="hero-bottom">
+    <p class="hero-desc">Self-taught maker. I build apps and websites that help real people in their everyday lives — all free, no ads, no catch. Focused on Southeast Asia.</p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-primary">See my work</a>
+      <a href="#contact" class="btn btn-ghost">Get in touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label">About</p>
+  <div class="about-main">
+    <p>I'm a <strong>self-taught maker</strong> who learned everything by building real things. No classroom — just curiosity, late nights, and a lot of trial and error.</p>
+    <p>I care about making products that feel <strong>simple and useful</strong> for everyday people. Whether it's helping someone remember a loved one's birthday, or track a warranty before it expires — I want what I build to actually matter.</p>
+    <p>My focus is <strong>Southeast Asia</strong> — a region full of energy, diversity, and communities that deserve great products.</p>
+
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Apps released</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">Free</div>
+        <div class="stat-label">Always, no exceptions</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4+</div>
+        <div class="stat-label">Languages supported</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <p class="side-label">About me</p>
-    <div class="about-text">
-      <p>
-        I'm a <strong>self-taught maker</strong> who learned everything by building real things.
-        No classroom — just curiosity, late nights, and a lot of trial and error.
-      </p>
-      <p>
-        I care about making products that feel <strong>simple and useful</strong> for everyday people.
-        Whether it's helping someone remember a loved one's birthday, or track a warranty before it expires —
-        I want what I build to actually matter to the people using it.
-      </p>
-      <p>
-        I focus on <strong>Southeast Asia</strong> — a region full of energy, diversity,
-        and communities that deserve great products.
-      </p>
-    </div>
-  </section>
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="projects-header">
+    <p class="section-label">Projects</p>
+    <p class="projects-intro">Everything I've released is <strong>completely free</strong> — no ads, no subscription, no payment. Just things I built because I thought they'd be useful.</p>
+  </div>
 
-  <!-- PROJECTS -->
-  <section id="projects">
-    <div class="projects-top">
-      <p class="side-label">Projects</p>
-      <p class="projects-intro">
-        Everything I've released is <strong>completely free</strong> —
-        no ads, no subscription, no payment. Just things I built because I thought they'd be useful.
-      </p>
-    </div>
-
-    <div class="projects-group">
-      <p class="group-label">Released</p>
-      <div class="cards-grid">
-
-        <div class="card">
-          <span class="card-name">KeepMemo</span>
-          <p class="card-desc">A private memory journal for the people in your life. Save birthdays, shared moments, gifts, and feelings — so the small things never fade. Everything stays on your phone, just for you.</p>
-          <span class="card-badge">Free</span>
-        </div>
-
-        <div class="card">
-          <span class="card-name">Remindox</span>
-          <p class="card-desc">An app that tracks the things people forget — warranties, recurring bills, and life admin tasks — and reminds you before it's too late.</p>
-          <span class="card-badge">Free</span>
-        </div>
-
-        <div class="card">
-          <span class="card-name">Marapedia</span>
-          <p class="card-desc">An encyclopedia for the Mara community — a place to read, write, and preserve our culture, history, and language. Available in Mara, English, Myanmar, and Mizo. This one is close to my heart.</p>
-          <span class="card-badge">Free · Mara community</span>
-        </div>
-
-        <div class="card">
-          <span class="card-name">Marahlabu</span>
-          <p class="card-desc">A digital hymn book for the Mara Christian community. All the lyrics, in your pocket, no internet needed.</p>
-          <span class="card-badge">Free · Mara community</span>
-        </div>
-
+  <div class="projects-group">
+    <p class="group-title">Released</p>
+    <div class="project-list">
+      <div class="project-row">
+        <div class="project-name">KeepMemo</div>
+        <p class="project-desc">A private memory journal for the people in your life. Save birthdays, shared moments, gifts, and feelings — so the small things never fade. Everything stays on your phone, just for you.</p>
+        <span class="project-tag tag-live">Live</span>
+      </div>
+      <div class="project-row">
+        <div class="project-name">Remindox</div>
+        <p class="project-desc">Tracks the things people forget — warranties, recurring bills, and life admin tasks — and reminds you before it's too late.</p>
+        <span class="project-tag tag-live">Live</span>
+      </div>
+      <div class="project-row">
+        <div class="project-name">Marapedia</div>
+        <p class="project-desc">An encyclopedia for the Mara community — a place to read, write, and preserve culture, history, and language. Available in Mara, English, Myanmar, and Mizo. This one is close to my heart.</p>
+        <span class="project-tag tag-community">Mara community</span>
+      </div>
+      <div class="project-row">
+        <div class="project-name">Marahlabu</div>
+        <p class="project-desc">A digital hymn book for the Mara Christian community. All the lyrics, in your pocket, no internet needed.</p>
+        <span class="project-tag tag-community">Mara community</span>
       </div>
     </div>
+  </div>
 
-    <div class="projects-group">
-      <p class="group-label">In the works</p>
-      <div class="cards-grid">
-
-        <div class="card">
-          <span class="card-name">GreenCircle</span>
-          <p class="card-desc">A platform for discovering and supporting local businesses — with community features, business profiles, and follow mechanics.</p>
-          <span class="card-badge dim">Planning</span>
-        </div>
-
-        <div class="card">
-          <span class="card-name">PStars</span>
-          <p class="card-desc">A social app with real-time chat, video calls, and a community feed — designed for people to stay connected with the ones they care about.</p>
-          <span class="card-badge dim">Planning</span>
-        </div>
-
+  <div class="projects-group">
+    <p class="group-title">In the works</p>
+    <div class="project-list">
+      <div class="project-row">
+        <div class="project-name">GreenCircle</div>
+        <p class="project-desc">A platform for discovering and supporting local businesses — with community features, business profiles, and follow mechanics.</p>
+        <span class="project-tag tag-building">Building</span>
+      </div>
+      <div class="project-row">
+        <div class="project-name">PStars</div>
+        <p class="project-desc">A social app with real-time chat, video calls, and a community feed — designed for people to stay connected with the ones they care about.</p>
+        <span class="project-tag tag-building">Building</span>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <p class="side-label">Contact</p>
-    <div class="contact-body">
-      <h2>Let's work<br />together.</h2>
-      <p>
-        Open to collaborations, freelance projects, or just a good conversation
-        about building something meaningful.
-      </p>
-      <div class="links-row">
-        <a href="https://github.com" target="_blank" class="contact-link">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.164 6.839 9.49.5.09.682-.218.682-.484 0-.236-.009-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .269.18.579.688.481C19.138 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
-          GitHub
-        </a>
-        <a href="mailto:hello@marason.dev" class="contact-link">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          Email
-        </a>
-        <a href="https://linkedin.com" target="_blank" class="contact-link">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          LinkedIn
-        </a>
-      </div>
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">Contact</p>
+  <div class="contact-main">
+    <h2>Let's work<br/>together.</h2>
+    <p>Open to collaborations, freelance projects, or just a good conversation about building something meaningful.</p>
+    <div class="social-grid">
+      <a href="https://github.com" target="_blank" class="social-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.164 6.839 9.49.5.09.682-.218.682-.484 0-.236-.009-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .269.18.579.688.481C19.138 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+        GitHub
+      </a>
+      <a href="mailto:hello@marason.dev" class="social-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email
+      </a>
+      <a href="https://linkedin.com" target="_blank" class="social-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://facebook.com" target="_blank" class="social-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.883v2.27h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+        Facebook
+      </a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer>
-    <span>Marason</span>
-    <span>© 2026</span>
-  </footer>
+<footer>
+  <span class="footer-logo">Marason</span>
+  <span>© 2026 — Built with care, shipped for free.</span>
+</footer>
 
 </body>
 </html>
