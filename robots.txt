@@ -1,1 +1,5 @@
 
+User-agent: *
+Allow: /
+
+Sitemap: https://cleversta.github.io/about_me/sitemap.xml
