@@ -1,4 +1,3 @@
-
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --ink:#1B1712;
@@ -246,6 +245,7 @@ main{max-width:1180px;margin:0 auto;padding:0 48px}
 }
 .tag-live{background:var(--moss-lt);color:var(--moss)}
 .tag-live::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--moss)}
+.tag-soon{background:var(--paper2);color:var(--ink-soft);border:1px solid var(--line)}
 .tag-community{background:var(--ochre-lt);color:var(--ochre)}
 .tag-free{background:var(--paper2);color:var(--ink-soft);border:1px solid var(--line)}
 .store-link{
