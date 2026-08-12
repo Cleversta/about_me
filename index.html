@@ -134,13 +134,13 @@
           </div>
         </div>
         <div class="project-gallery">
-          <div class="shot-slot"><img src="assets/keepmemo1.jpg" alt="KeepMemo screenshot 1" loading="lazy"></div>
-          <div class="shot-slot"><img src="assets/keepmemo2.jpg" alt="KeepMemo screenshot 2" loading="lazy"></div>
-          <div class="shot-slot"><img src="assets/keepmemo3.jpg" alt="KeepMemo screenshot 3" loading="lazy"></div>
-          <div class="shot-slot"><img src="assets/keepmemo4.jpg" alt="KeepMemo screenshot 4" loading="lazy"></div>
-          <div class="shot-slot"><img src="assets/keepmemo5.jpg" alt="KeepMemo screenshot 5" loading="lazy"></div>
-          <div class="shot-slot"><img src="assets/keepmemo6.jpg" alt="KeepMemo screenshot 6" loading="lazy"></div>
-          <div class="shot-slot"><img src="assets/keepmemo7.jpg" alt="KeepMemo screenshot 7" loading="lazy"></div>
+          <div class="shot-slot"><img src="assets/keepmemo1.jpg" alt="KeepMemo screenshot 1" loading="lazy" data-gallery="keepmemo" data-index="0"></div>
+          <div class="shot-slot"><img src="assets/keepmemo2.jpg" alt="KeepMemo screenshot 2" loading="lazy" data-gallery="keepmemo" data-index="1"></div>
+          <div class="shot-slot"><img src="assets/keepmemo3.jpg" alt="KeepMemo screenshot 3" loading="lazy" data-gallery="keepmemo" data-index="2"></div>
+          <div class="shot-slot"><img src="assets/keepmemo4.jpg" alt="KeepMemo screenshot 4" loading="lazy" data-gallery="keepmemo" data-index="3"></div>
+          <div class="shot-slot"><img src="assets/keepmemo5.jpg" alt="KeepMemo screenshot 5" loading="lazy" data-gallery="keepmemo" data-index="4"></div>
+          <div class="shot-slot"><img src="assets/keepmemo6.jpg" alt="KeepMemo screenshot 6" loading="lazy" data-gallery="keepmemo" data-index="5"></div>
+          <div class="shot-slot"><img src="assets/keepmemo7.jpg" alt="KeepMemo screenshot 7" loading="lazy" data-gallery="keepmemo" data-index="6"></div>
         </div>
       </div>
     </div>
@@ -277,6 +277,14 @@
   <span>© 2026 — built solo, shipped for free.</span>
 </footer>
 
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+  <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous image">‹</button>
+  <img id="lightboxImg" src="" alt=""/>
+  <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next image">›</button>
+  <div class="lightbox-count" id="lightboxCount"></div>
+</div>
+
 <script>
   // Nav scroll state
   const nav = document.getElementById('siteNav');
@@ -301,6 +309,90 @@
   } else {
     document.querySelectorAll('.ln').forEach(el => el.classList.add('in-view'));
   }
+
+  // Lightbox
+  (function () {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCount = document.getElementById('lightboxCount');
+    const btnClose = document.getElementById('lightboxClose');
+    const btnPrev = document.getElementById('lightboxPrev');
+    const btnNext = document.getElementById('lightboxNext');
+
+    let currentGallery = [];
+    let currentIndex = 0;
+    let lastFocused = null;
+
+    function buildGallery(name) {
+      return Array.from(document.querySelectorAll(`img[data-gallery="${name}"]`))
+        .sort((a, b) => Number(a.dataset.index) - Number(b.dataset.index));
+    }
+
+    function show(index) {
+      if (!currentGallery.length) return;
+      currentIndex = (index + currentGallery.length) % currentGallery.length;
+      const img = currentGallery[currentIndex];
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightboxCount.textContent = `${currentIndex + 1} / ${currentGallery.length}`;
+      const multi = currentGallery.length > 1;
+      btnPrev.style.display = multi ? 'flex' : 'none';
+      btnNext.style.display = multi ? 'flex' : 'none';
+    }
+
+    function open(galleryName, index) {
+      currentGallery = buildGallery(galleryName);
+      if (!currentGallery.length) return;
+      lastFocused = document.activeElement;
+      show(index);
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      btnClose.focus();
+    }
+
+    function close() {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      lightboxImg.src = '';
+      if (lastFocused) lastFocused.focus();
+    }
+
+    document.querySelectorAll('.shot-slot img[data-gallery]').forEach(img => {
+      img.addEventListener('click', () => {
+        open(img.dataset.gallery, Number(img.dataset.index));
+      });
+    });
+
+    btnClose.addEventListener('click', close);
+    btnPrev.addEventListener('click', () => show(currentIndex - 1));
+    btnNext.addEventListener('click', () => show(currentIndex + 1));
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) close();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowLeft') show(currentIndex - 1);
+      if (e.key === 'ArrowRight') show(currentIndex + 1);
+    });
+
+    // basic swipe support on mobile
+    let touchStartX = 0;
+    lightbox.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].clientX;
+    }, { passive: true });
+    lightbox.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 40) {
+        if (dx > 0) show(currentIndex - 1);
+        else show(currentIndex + 1);
+      }
+    }, { passive: true });
+  })();
 </script>
 </body>
 </html>
