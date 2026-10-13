@@ -1,9 +1,11 @@
 Marason Tleitu — About Me
 
-Personal site for Marason Tleitu (Cleversta).
+Personal developer portfolio for Marason Tleitu (Cleversta), featuring shipped apps, selected projects, and technical skills.
 
 Live: https://cleversta.github.io/about_me/
 Email: cleverstar02@gmail.com
+
+Purpose: present real projects and technologies for software-development opportunities.
 
 Files
 
