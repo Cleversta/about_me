@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Marason Tleitu — Indie Developer | Free Apps, No Ads</title>
-<meta name="description" content="Marason Tleitu is a self-taught developer in Malaysia building free, ad-free apps for everyday life — KeepMemo, Remindox, DONE:Daily, Marapedia, Marahlabu. No subscriptions, no catch."/>
+<meta name="description" content="Marason Tleitu is a self-taught software developer in Malaysia building useful apps and web tools. Explore KeepMemo, DONE:Daily, Daily Aggregator, and community projects."/>
 <meta name="author" content="Marason Tleitu"/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://cleversta.github.io/about_me/"/>
@@ -13,9 +13,10 @@
 <meta property="og:title" content="Marason Tleitu — I build things people actually use"/>
 <meta property="og:description" content="Self-taught developer in Malaysia. Free apps, no ads, no subscriptions. KeepMemo, Remindox, DONE:Daily, Marapedia, and more."/>
 <meta property="og:url" content="https://cleversta.github.io/about_me/"/>
-<meta property="og:locale" content="en_US"/>
+<meta property="og:locale" content="en_MY"/>
+<meta name="twitter:card" content="summary_large_image"/>
 
-<meta name="twitter:card" content="summary"/>
+
 <meta name="twitter:title" content="Marason Tleitu — Indie Developer"/>
 <meta name="twitter:description" content="Free apps for everyday problems. No ads, no subscriptions, no catch."/>
 
@@ -24,14 +25,29 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 
 <link rel="stylesheet" href="styles.css"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Marason Tleitu",
+  "url": "https://cleversta.github.io/about_me/",
+  "jobTitle": "Self-taught Software Developer",
+  "description": "Self-taught developer in Malaysia building useful apps and web tools.",
+  "sameAs": ["https://github.com/Cleversta", "https://www.facebook.com/marason.tleitu.5/"],
+  "knowsAbout": ["Flutter", "Dart", "JavaScript", "HTML", "CSS", "Next.js", "Node.js", "PostgreSQL", "Supabase", "Git", "Cloudflare Pages"]
+}
+</script>
+
 </head>
 <body>
 
-<nav id="siteNav">
+<a class="skip-link" href="#main-content">Skip to content</a>
+<nav id="siteNav" aria-label="Main navigation">
   <a href="#" class="nav-logo">marason</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#toolkit">Skills</a></li>
     <li><a href="#contact" class="nav-cta">Get in touch</a></li>
   </ul>
 </nav>
@@ -53,7 +69,7 @@
   </div>
 </section>
 
-<main>
+<main id="main-content">
   <section id="about" style="border-left:none;border-right:none;padding-left:0;padding-right:0;max-width:none">
     <div class="section-head"><p class="eyebrow">About</p></div>
 
@@ -100,7 +116,7 @@
     <div class="ln">
       <div class="ln-content">
         <div class="stats-row">
-          <div class="stat"><div class="stat-num">5</div><div class="stat-label">APPS SHIPPED</div></div>
+          <div class="stat"><div class="stat-num">4+</div><div class="stat-label">PROJECTS SHIPPED</div></div>
           <div class="stat"><div class="stat-num">Free</div><div class="stat-label">ALWAYS, NO EXCEPTIONS</div></div>
           <div class="stat"><div class="stat-num">0</div><div class="stat-label">ADS IN THE APPS</div></div>
         </div>
@@ -130,6 +146,7 @@
             <span class="tag tag-live">Live</span>
             <span class="tag tag-free">Free · No ads</span>
             <a class="store-link" href="https://cleversta.github.io/keepmemo-web/" target="_blank" rel="noreferrer noopener">Website →</a>
+            <a class="store-link" href="https://play.google.com/store/apps/details?id=com.cleversta.keepmemo" target="_blank" rel="noreferrer noopener">Google Play →</a>
             <a class="store-link" href="https://cleversta.github.io/privacy-policy/" target="_blank" rel="noreferrer noopener">Privacy →</a>
           </div>
         </div>
@@ -169,12 +186,12 @@
     <div class="ln project-row">
       <div class="ln-content">
         <div class="project-text">
-          <div class="project-name">DONE:Daily</div>
+          <div class="project-name"><a href="https://play.google.com/store/search?q=DONE%3ADaily%20Cleversta&amp;c=apps" target="_blank" rel="noreferrer noopener">DONE:Daily</a></div>
           <p class="project-desc">A focused daily productivity app built around one idea: plan your day, do the work, then actually stop and rest. Set goals, run a focus timer, and when your work-end time hits, a guided wind-down closes the day out — no endless to-do list guilt-tripping you.</p>
           <div class="project-meta">
-            <!-- Temporary: not on Play Store yet -->
-            <span class="tag tag-soon">Coming soon</span>
-            <span class="tag tag-free">Not on Play Store yet</span>
+            <span class="tag tag-live">Released</span>
+            <span class="tag tag-free">Android app</span>
+            <a class="store-link" href="https://play.google.com/store/search?q=DONE%3ADaily%20Cleversta&amp;c=apps" target="_blank" rel="noreferrer noopener">Find on Google Play →</a>
           </div>
         </div>
         <div class="project-gallery">
@@ -202,7 +219,7 @@
           </div>
         </div>
         <div class="project-gallery">
-          <div class="shot-slot"><img src="assets/marapedia/marapedia1.jgp" alt="Marapedia screenshot 1" loading="lazy" data-gallery="marapedia" data-index="0"></div>
+          <div class="shot-slot"><img src="assets/marapedia/marapedia1.jpg" alt="Marapedia screenshot 1" loading="lazy" data-gallery="marapedia" data-index="0"></div>
           <div class="shot-slot"><img src="assets/marapedia/marapedia2.jpg" alt="Marapedia screenshot 2" loading="lazy" data-gallery="marapedia" data-index="1"></div>
           <div class="shot-slot"><img src="assets/marapedia/marapedia3.jpg" alt="Marapedia screenshot 3" loading="lazy" data-gallery="marapedia" data-index="2"></div>
           <div class="shot-slot"><img src="assets/marapedia/marapedia4.jpg" alt="Marapedia screenshot 4" loading="lazy" data-gallery="marapedia" data-index="3"></div>
@@ -232,6 +249,25 @@
         </div>
       </div>
     </div>
+  </section>
+
+  <section id="toolkit" aria-labelledby="toolkit-title" style="border-left:none;border-right:none;padding-left:0;padding-right:0;max-width:none">
+    <div class="section-head"><p class="eyebrow" id="toolkit-title">Technical toolkit</p></div>
+    <div class="ln"><div class="ln-content">
+      <p class="toolkit-intro">I learn by shipping real projects, then improving them through testing, feedback, and iteration. These are technologies I have used while building and maintaining my own products.</p>
+      <div class="skill-groups">
+        <div class="skill-group"><h3>Languages &amp; UI</h3><p>JavaScript · HTML · CSS · Dart · Flutter</p></div>
+        <div class="skill-group"><h3>Web &amp; app development</h3><p>Next.js · React · Node.js · REST APIs · responsive web design</p></div>
+        <div class="skill-group"><h3>Data &amp; infrastructure</h3><p>PostgreSQL · Supabase · Redis · Git · GitHub · Cloudflare Pages · Netlify</p></div>
+        <div class="skill-group"><h3>How I work</h3><p>Debugging · API integration · deployment · documentation · AI-assisted development</p></div>
+      </div>
+    </div></div>
+    <div class="ln"><div class="ln-content">
+      <h3 class="portfolio-subtitle">Selected engineering work</h3>
+      <div class="engineering-project"><h4><a href="https://dailyaggregator.online" target="_blank" rel="noreferrer noopener">Daily Aggregator</a></h4><p>A daily briefing website that gathers topic-focused information and turns it into a browsable reading experience, with category pages and browser tools.</p><p class="engineering-links"><a href="https://github.com/Cleversta/daily_aggregator_main" target="_blank" rel="noreferrer noopener">Source repository →</a></p></div>
+      <div class="engineering-project"><h4><a href="https://cleversta.github.io/keepmemo-web/" target="_blank" rel="noreferrer noopener">KeepMemo</a></h4><p>An offline-first Android app for keeping personal memories about people, with birthdays, reminders, and a local-first approach to private data.</p><p class="engineering-links"><a href="https://play.google.com/store/apps/details?id=com.cleversta.keepmemo" target="_blank" rel="noreferrer noopener">Google Play listing →</a></p></div>
+      <p class="portfolio-note">I am looking for an opportunity to grow as a software developer, contribute to a team, and keep learning from production code and experienced engineers.</p>
+    </div></div>
   </section>
 
   <section id="contact" style="border-left:none;border-right:none;padding-left:0;padding-right:0;max-width:none">
@@ -282,7 +318,7 @@
   <span>© 2026 — built solo, shipped for free.</span>
 </footer>
 
-<div class="lightbox" id="lightbox" aria-hidden="true">
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Project screenshot gallery" aria-hidden="true">
   <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
   <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous image">‹</button>
   <img id="lightboxImg" src="" alt=""/>
