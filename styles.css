@@ -492,3 +492,11 @@ footer{
 .shot-slot img[role="button"]{cursor:zoom-in}
 @media(max-width:760px){nav{padding:0 20px;height:58px}.nav-links{gap:14px}.nav-links a{font-size:.68rem}#hero{padding:104px 24px 56px;min-height:88svh}main{padding:0 24px}section{padding:64px 24px}.section-head{grid-template-columns:34px 1fr;column-gap:14px;margin-bottom:30px}.ln{grid-template-columns:30px minmax(0,1fr);column-gap:14px}.about-inner{grid-template-columns:minmax(0,1fr) 76px;gap:14px}.photo-frame{width:76px;height:76px}.principles{grid-template-columns:1fr;gap:10px}.stats-row{flex-wrap:wrap}.stat{padding:16px 12px 4px}.stat-label{font-size:.58rem}.skill-groups{grid-template-columns:1fr}}
 @media(max-width:420px){.nav-links{gap:10px}.nav-links a{font-size:.63rem}.nav-cta{padding:6px 9px}.hero-h1{font-size:clamp(2.35rem,12vw,3.3rem)}.hero-support{font-size:.88rem}.btn{padding:11px 16px}.stat{flex:1 1 40%}}
+
+
+/* Final polish: screenshot placeholders and predictable image rendering */
+.project-placeholder{display:flex;align-items:center;justify-content:center;min-height:130px;padding:18px;text-align:center;border:1px dashed var(--line);color:var(--ink-soft);font-size:.78rem;line-height:1.6;background:rgba(255,255,255,.18)}
+.project-gallery .shot-slot img{display:block;width:100%;height:auto;object-fit:contain}
+.project-gallery .shot-slot img:focus-visible{outline:3px solid var(--moss);outline-offset:3px}
+.store-link{display:inline-flex;align-items:center;gap:4px;text-underline-offset:3px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
